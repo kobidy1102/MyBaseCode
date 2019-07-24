@@ -3,13 +3,14 @@ package com.example.testmybasecode.domain.login;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.example.testmybasecode.MainApplication;
 import com.example.testmybasecode.R;
-import com.example.testmybasecode.factory.DaggerApplicationComponent;
 import com.example.testmybasecode.service.model.LoginResponse;
 import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
@@ -19,6 +20,8 @@ import javax.inject.Inject;
 public class LoginActivity extends MvpActivity<LoginView, LoginPresenter>
 implements LoginView {
 
+    @App
+    protected MainApplication application;
     @Inject
     protected LoginPresenter presenter;
 
@@ -30,9 +33,13 @@ implements LoginView {
 
     @AfterInject
     protected void afterInject() {
-        DaggerApplicationComponent.builder()
-                .build()
-                .inject(this);
+
+       // subComponent mới  cần khởi tạo vậy, còn ở MainApplicationComponent thì ko
+//        DaggerApplicationComponent.builder()
+//                .applicationComponent(application.getApplicationComponent())
+//                .build()
+//                .inject(this);
+        application.getApplicationComponent().inject(this);
     }
 
 
@@ -48,12 +55,10 @@ implements LoginView {
 
     @Override
     public void showLoading() {
-     //   Toast.makeText(this, "Show loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void hideLoading() {
-       // Toast.makeText(this, "Hide loading", Toast.LENGTH_SHORT).show();
     }
 
     @Override

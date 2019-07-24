@@ -1,6 +1,8 @@
 package com.example.testmybasecode.factory;
 
 
+import android.app.Application;
+
 import com.example.testmybasecode.ApiUrls;
 import com.example.testmybasecode.service.authentication.RestAuthenticationService;
 
@@ -12,6 +14,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApplicationModule {
+
+    private Application application;
+    public ApplicationModule(Application application) {
+        this.application = application;
+    }
+    public Application getApplication() {
+        return application;
+    }
 
     @Provides
     public Retrofit provideRetrofit() {

@@ -1,4 +1,4 @@
-package com.example.testmybasecode.domain;
+package com.example.testmybasecode.domain.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;

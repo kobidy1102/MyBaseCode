@@ -7,5 +7,5 @@ import dagger.Component;
 
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
-    void inject(LoginActivity loginActivity);
+    void inject(LoginActivity loginActivity); // tạo liên kết tới nơi cần object mà Module đã khởi tạo
 }
