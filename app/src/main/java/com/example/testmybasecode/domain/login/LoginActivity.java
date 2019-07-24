@@ -35,11 +35,11 @@ implements LoginView {
     protected void afterInject() {
 
        // subComponent mới  cần khởi tạo vậy, còn ở MainApplicationComponent thì ko
-//        DaggerApplicationComponent.builder()
-//                .applicationComponent(application.getApplicationComponent())
-//                .build()
-//                .inject(this);
-        application.getApplicationComponent().inject(this);
+        DaggerLoginComponent.builder()
+                .applicationComponent(application.getApplicationComponent())
+                .build()
+                .inject(this);
+       // application.getApplicationComponent().inject(this);
     }
 
 
